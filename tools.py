@@ -9,7 +9,6 @@ def save_to_txt(data: str, filename: str = "research_output.txt"):
 
     with open(filename, "a", encoding="utf-8") as f:
         f.write(formatted_text)
-    
     return f"Data successfully saved to {filename}"
 
 save_tool = Tool(
@@ -17,6 +16,8 @@ save_tool = Tool(
     func=save_to_txt,
     description="Saves structured research data to a text file.",
 )
+
+
 
 search = DuckDuckGoSearchRun()
 search_tool = Tool(
@@ -27,4 +28,3 @@ search_tool = Tool(
 
 api_wrapper = WikipediaAPIWrapper(top_k_results=1, doc_content_chars_max=100)
 wiki_tool = WikipediaQueryRun(api_wrapper=api_wrapper)
-
